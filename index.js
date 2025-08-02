@@ -3,11 +3,14 @@ const express = require("express");
 const app = express();
 const getitem = require("./Routes/GetRoute");
 const { sql, config } = require("./ConfigDB/database");
+const filemerge = require("./Routes/filemerge");
 
 app.use(express.json());
 
 // Routes
 app.use("/api", getitem);
+app.use("/api", filemerge);
+
 app.get("/", (req, res) => {
   res.send("Welcome to the API");
 });
